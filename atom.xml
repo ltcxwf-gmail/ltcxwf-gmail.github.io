@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://snailtyan.github.io/"/>
   <updated>2016-08-31T15:58:00.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://snailtyan.github.io/</id>
   
   <author>
     <name>Tyan</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Git多用户配置</title>
-    <link href="http://yoursite.com/2016/08/31/Git%E5%A4%9A%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2016/08/31/Git多用户配置/</id>
+    <link href="https://snailtyan.github.io/2016/08/31/Git%E5%A4%9A%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE/"/>
+    <id>https://snailtyan.github.io/2016/08/31/Git多用户配置/</id>
     <published>2016-08-31T15:03:22.000Z</published>
     <updated>2016-08-31T15:58:00.000Z</updated>
     
@@ -37,7 +37,7 @@
     </summary>
     
     
-      <category term="Git 多用户" scheme="http://yoursite.com/tags/Git-%E5%A4%9A%E7%94%A8%E6%88%B7/"/>
+      <category term="Git 多用户" scheme="https://snailtyan.github.io/tags/Git-%E5%A4%9A%E7%94%A8%E6%88%B7/"/>
     
   </entry>
   
