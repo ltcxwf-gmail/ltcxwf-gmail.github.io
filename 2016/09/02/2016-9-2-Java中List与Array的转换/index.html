@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java中List与Array的转换 | SnailTyan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java中List与Array的转换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中List与Array的转换">
+<meta property="og:url" content="https://ltcxwf-gmail.github.io/2016/09/02/2016-9-2-Java中List与Array的转换/index.html">
+<meta property="og:site_name" content="SnailTyan's Blog">
+<meta property="og:description" content="Java中List与Array的转换">
+<meta property="og:updated_time" content="2016-09-02T08:48:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中List与Array的转换">
+<meta name="twitter:description" content="Java中List与Array的转换">
+  
+    <link rel="alternate" href="/atom.xml" title="SnailTyan&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SnailTyan&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ltcxwf-gmail.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-9-2-Java中List与Array的转换" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/02/2016-9-2-Java中List与Array的转换/" class="article-date">
+  <time datetime="2016-09-02T07:46:24.000Z" itemprop="datePublished">2016-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java中List与Array的转换
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;在Java项目开发过程中，集合之间的互相转换是非常常见的，其中两个比较典型的转换是List和Array之间的转换，本文主要介绍这二者之间的转换、其中存在的一些问题以及解决方案，本文JDK版本为1.8。  </p>
+<h1 id="1-Array-To-List"><a href="#1-Array-To-List" class="headerlink" title="1.Array To List "></a>1.Array To List </h1><p>Array To List在Java中的方法是Arrays.asList()方法，这是在Java开发中常用的方法，在一般情况下使用这个方法将Array转为List都没问题，但要对转换后的List进行修改时会出现下面的异常：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Exception in thread &quot;main&quot; java.lang.UnsupportedOperationException</div><div class="line">   at java.util.AbstractList.add(AbstractList.java:148)</div><div class="line">   at java.util.AbstractList.add(AbstractList.java:108)</div><div class="line">   at com.liu.test.Test.main(Test.java:17)</div></pre></td></tr></table></figure>
+<p>测试代码为：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class Test &#123;</div><div class="line">   public static void main(String[] args) &#123;</div><div class="line">       String[] str = &#123;&quot;134&quot;, &quot;test&quot;, &quot;list&quot;&#125;;</div><div class="line">       List&lt;String&gt; list = Arrays.asList(str);</div><div class="line">       list.add(&quot;&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为什么会出现这个错误呢？看一下Arrays.asList()方法的源码及介绍</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Returns a fixed-size list backed by the specified array.  (Changes to</div><div class="line"> * the returned list "write through" to the array.)  This method acts</div><div class="line"> * as bridge between array-based and collection-based APIs, in</div><div class="line"> * combination with &#123;<span class="doctag">@link</span> Collection#toArray&#125;.  The returned list is</div><div class="line"> * serializable and implements &#123;<span class="doctag">@link</span> RandomAccess&#125;.</div><div class="line"> *</div><div class="line"> * &lt;p&gt;This method also provides a convenient way to create a fixed-size</div><div class="line"> * list initialized to contain several elements:</div><div class="line"> * &lt;pre&gt;</div><div class="line"> *     List&amp;lt;String&amp;gt; stooges = Arrays.asList("Larry", "Moe", "Curly");</div><div class="line"> * &lt;/pre&gt;</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> &lt;T&gt; the class of the objects in the array</div><div class="line"> * <span class="doctag">@param</span> a the array by which the list will be backed</div><div class="line"> * <span class="doctag">@return</span> a list view of the specified array</div><div class="line"> */</div><div class="line"><span class="meta">@SafeVarargs</span></div><div class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"varargs"</span>)</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">asList</span><span class="params">(T... a)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(a);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注释中第一句话就说了，Arrays.asList()方法返回的是一个固定大小的List，如何来使返回的List可添加或删除元素呢?<br>方案一：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(Arrays.asList(str));</div></pre></td></tr></table></figure>
+<p>方案二：使用Google Guava，需要import Lists：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = Lists.newArrayList(str);</div></pre></td></tr></table></figure>
+<p>方案三：使用Apache Commons Collections，需要import CollectionUtils：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">CollectionUtils.addAll(list, str);</div></pre></td></tr></table></figure>
+<p>上面三种方案根据项目需要自己选择即可。  </p>
+<h1 id="2-List-To-Array"><a href="#2-List-To-Array" class="headerlink" title="2.List To Array  "></a>2.List To Array  </h1><p>List To Array在Java中的方法是list.toArray()方法，但这个方法有个问题是返回的数组对象为Object[]，直接用String[]去强制转换会报语法错误，直接点击toArray()方法去查看源码，当然也可以直接看官方API文档:  </p>
+<pre><code class="Java"><span class="comment">/**
+ * Returns an array containing all of the elements in this list in proper
+ * sequence (from first to last element).
+ *
+ * &lt;p&gt;The returned array will be "safe" in that no references to it are
+ * maintained by this list.  (In other words, this method must
+ * allocate a new array even if this list is backed by an array).
+ * The caller is thus free to modify the returned array.
+ *
+ * &lt;p&gt;This method acts as bridge between array-based and collection-based
+ * APIs.
+ *
+ * <span class="doctag">@return</span> an array containing all of the elements in this list in proper
+ *         sequence
+ * <span class="doctag">@see</span> Arrays#asList(Object[])
+ */</span>
+Object[] toArray();
+<span class="comment">/**
+ * Returns an array containing all of the elements in this list in
+ * proper sequence (from first to last element); the runtime type of
+ * the returned array is that of the specified array.  If the list fits
+ * in the specified array, it is returned therein.  Otherwise, a new
+ * array is allocated with the runtime type of the specified array and
+ * the size of this list.
+ *
+ * &lt;p&gt;If the list fits in the specified array with room to spare (i.e.,
+ * the array has more elements than the list), the element in the array
+ * immediately following the end of the list is set to &lt;tt&gt;null&lt;/tt&gt;.
+ * (This is useful in determining the length of the list &lt;i&gt;only&lt;/i&gt; if
+ * the caller knows that the list does not contain any null elements.)
+ *
+ * &lt;p&gt;Like the {<span class="doctag">@link</span> #toArray()} method, this method acts as bridge between
+ * array-based and collection-based APIs.  Further, this method allows
+ * precise control over the runtime type of the output array, and may,
+ * under certain circumstances, be used to save allocation costs.
+ *
+ * &lt;p&gt;Suppose &lt;tt&gt;x&lt;/tt&gt; is a list known to contain only strings.
+ * The following code can be used to dump the list into a newly
+ * allocated array of &lt;tt&gt;String&lt;/tt&gt;:
+ *
+ * &lt;pre&gt;{<span class="doctag">@code</span>
+ *     String[] y = x.toArray(new String[0]);
+ * }&lt;/pre&gt;
+ *
+ * Note that &lt;tt&gt;toArray(new Object[0])&lt;/tt&gt; is identical in function to
+ * &lt;tt&gt;toArray()&lt;/tt&gt;.
+ *
+ * <span class="doctag">@param</span> a the array into which the elements of this list are to
+ *          be stored, if it is big enough; otherwise, a new array of the
+ *          same runtime type is allocated for this purpose.
+ * <span class="doctag">@return</span> an array containing the elements of this list
+ * <span class="doctag">@throws</span> ArrayStoreException if the runtime type of the specified array
+ *         is not a supertype of the runtime type of every element in
+ *         this list
+ * <span class="doctag">@throws</span> NullPointerException if the specified array is null
+ */</span>
+&lt;T&gt; T[] toArray(T[] a);
+</code></pre>
+<p>从源码说明中可以看出，如果想要list.toArray()方法返回指定类型的数组，需要在toArray方法中加上一个数组类型的参数，如果参数数组个数大于list数组则将数组中多余的元素赋为空，如果数组大小不够会重新分配一个指定类型与list大小一致的数组。因此，List To Array可以写成： </p>
+<pre><code class="Java">list.toArray(<span class="keyword">new</span> String[<span class="number">0</span>]);
+or
+list.toArray(<span class="keyword">new</span> String[list.size()]); <span class="comment">//better</span>
+or 
+list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="comment">//JDK 1.8</span>
+</code></pre>
+<p>文章作者：Tyan<br>博客：<a href="http://noahsnail.com" target="_blank" rel="external">noahsnail.com</a>  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ltcxwf-gmail.github.io/2016/09/02/2016-9-2-Java中List与Array的转换/" data-id="cissau1qd0000s9sbwyduak28" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/05/2016-9-5-Mac下解决程序端口占用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mac下程序端口的查找及关闭
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/31/Git多用户配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git多用户配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-多用户/">Git 多用户</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git-多用户/" style="font-size: 10px;">Git 多用户</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/06/2016-9-6-Java中的集合转换(lambda表达式)/">Java中的集合转换(lambda表达式)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/05/2016-9-5-Mac下解决程序端口占用/">Mac下程序端口的查找及关闭</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/02/2016-9-2-Java中List与Array的转换/">Java中List与Array的转换</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/31/Git多用户配置/">Git多用户配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Tyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

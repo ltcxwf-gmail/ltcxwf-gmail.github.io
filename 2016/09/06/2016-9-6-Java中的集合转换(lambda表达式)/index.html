@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java中的集合转换(lambda表达式) | SnailTyan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java中的集合转换(lambda表达式)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中的集合转换(lambda表达式)">
+<meta property="og:url" content="https://ltcxwf-gmail.github.io/2016/09/06/2016-9-6-Java中的集合转换(lambda表达式)/index.html">
+<meta property="og:site_name" content="SnailTyan's Blog">
+<meta property="og:description" content="Java中的集合转换(lambda表达式)">
+<meta property="og:updated_time" content="2016-09-06T04:51:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中的集合转换(lambda表达式)">
+<meta name="twitter:description" content="Java中的集合转换(lambda表达式)">
+  
+    <link rel="alternate" href="/atom.xml" title="SnailTyan&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SnailTyan&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ltcxwf-gmail.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-9-6-Java中的集合转换(lambda表达式)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/06/2016-9-6-Java中的集合转换(lambda表达式)/" class="article-date">
+  <time datetime="2016-09-06T03:36:42.000Z" itemprop="datePublished">2016-09-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java中的集合转换(lambda表达式)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java应用中进行集合对象间的转换是非常常见的事情，有时候在处理某些任务时选择一种好的数据结构往往会起到事半功倍的作用，因此熟悉每种数据结构并知道其特点对于程序员来说是非常重要的，而只知道这些是不够的，有时候你需要一个Map来处理数据，而此时你手中只有一个List，此时知道如何将List转为Map就非常重要了，而只知道for循环将List转为Map这就太Low了，JDK1.8 吸收了许多函数式编程的思想，其中的lambda表达式不仅功能强大，而且减少了很多不必要的代码，本文不是介绍lambda表达式的，主要是利用lambda表达式进行Java中结合的转换，当然lambda表达式的使用往往离不开JDK1.8 的stream类，本文主要使用<strong><em>lambda表达式</em></strong>和<strong><em>stream类</em></strong>来实现Java中集合的转换，也会涉及到利用stream对数据进行的一些处理。 </p>
+<h2 id="1-List-To-Map-lt-gt-Map-To-List"><a href="#1-List-To-Map-lt-gt-Map-To-List" class="headerlink" title="1.List To Map  &lt;==&gt; Map To List  "></a>1.List To Map  &lt;==&gt; Map To List  </h2><p>将List转换为Map是Java中的常见操作，例如我想知道某个对象是否已经在List中，此时就需要将List转成Map，你总不会打算for循环一个个比吧！  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Data</span>   <span class="comment">//lombok提供的注解，会自动添加getter和setter</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line">   <span class="keyword">private</span> String id;</div><div class="line">   <span class="keyword">private</span> String name;</div><div class="line">   <span class="keyword">private</span> String info;</div><div class="line">&#125;</div><div class="line">```  </div><div class="line"></div><div class="line">现在有一个所有学生信息的列表`List&lt;Student&gt; list`和一个要新添加的学生`Student studentNew`，在添加学生之前需要对新添加的学生信息`studentNew`进行判断是否已经在`list`中，学生的唯一标识是id，不考虑其他，就是单纯的用Java代码判断，此时就需要将List转为Map，代码如下：  </div><div class="line"></div><div class="line">```Java  </div><div class="line">Map&lt;String, Student&gt; studentMap = list.stream().collect(Collectors.toMap(Student::getId, Function.identity()));</div><div class="line"><span class="keyword">if</span>(studentMap.containsKey(studentNew.getId())) &#123;</div><div class="line">   System.out.println(<span class="string">"studentNew in map!"</span>);</div><div class="line">&#125;</div><div class="line">```  </div><div class="line">将Map转为List就非常简单了:  </div><div class="line"></div><div class="line">```Java</div><div class="line">List&lt;Student&gt; listValues = <span class="keyword">new</span> ArrayList&lt;Student&gt;(studentMap.values()); <span class="comment">//map values</span></div><div class="line">List&lt;String&gt; listKeys = <span class="keyword">new</span> ArrayList&lt;String&gt;(studentMap.keySet()); <span class="comment">//map keys  </span></div><div class="line">```  </div><div class="line"></div><div class="line"><span class="number">2</span>.List To Set &amp;lt;==&amp;gt; Set To List  </div><div class="line">---  </div><div class="line">List与Set之间的转换就很容易了，Set To List：  </div><div class="line"></div><div class="line">```Java</div><div class="line">Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;();</div><div class="line">set.add(<span class="string">"123"</span>);</div><div class="line">set.add(<span class="string">"456"</span>);</div><div class="line">List&lt;String&gt; setToList = <span class="keyword">new</span> ArrayList&lt;String&gt;(set); <span class="comment">//Set To List</span></div><div class="line">```  </div><div class="line">  </div><div class="line">List To Set:    </div><div class="line"></div><div class="line">```Java</div><div class="line">Set&lt;String&gt; listToSet = <span class="keyword">new</span> HashSet&lt;String&gt;(listSet);</div></pre></td></tr></table></figure>
+<p>注：如果需要对List去重可以使用Set，这<code>List To Set + Set To List</code>两个操作可以将List中的重复元素去掉。这里用的是HashSet，如果需要一个有序的List，可以选择TreeSet，TreeSet需要实现对象的Comparable接口。  </p>
+<h2 id="3-Array-To-List-lt-gt-List-To-Array"><a href="#3-Array-To-List-lt-gt-List-To-Array" class="headerlink" title="3.Array To List &lt;==&gt; List To Array  "></a>3.Array To List &lt;==&gt; List To Array  </h2><p>参考：<a href="http://noahsnail.com/blog/2016/09/02/Java%E4%B8%ADList%E4%B8%8EArray%E7%9A%84%E8%BD%AC%E6%8D%A2.html" target="_blank" rel="external">Java中List与Array的转换</a><br>注：对Array的许多操作都可以先将Array转为List，然后再进行需要的转换再进行处理，或转为List后使用Stream提供的操作来进行处理。  </p>
+<h2 id="4-Map-To-Set-lt-gt-Set-To-Map"><a href="#4-Map-To-Set-lt-gt-Set-To-Map" class="headerlink" title="4.Map To Set  &lt;==&gt; Set To Map  "></a>4.Map To Set  &lt;==&gt; Set To Map  </h2><p>Map与Set之间的转换也比较简单，Map To Set：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Set&lt;String&gt; mapToSetKeys = <span class="keyword">new</span> HashSet&lt;String&gt;(studentMap.keySet()); <span class="comment">//map keys</span></div><div class="line">Set&lt;Student&gt; mapToSetValues = <span class="keyword">new</span> HashSet&lt;Student&gt;(studentMap.values()); <span class="comment">//map values</span></div><div class="line">```  </div><div class="line">Set To Map：  </div><div class="line"></div><div class="line">```Java</div><div class="line">Map&lt;String, Student&gt; setToMap = mapToSetValues.stream().collect(Collectors.toMap(Student::getId, Function.identity()));</div><div class="line">```  </div><div class="line"></div><div class="line"><span class="number">5</span>.List排序</div><div class="line">---</div><div class="line">要对List中的对象进行排序以前非常麻烦，什么对象实现Comparable接口啊，写一个StudentComparator实现Comparator接口呀，非常麻烦，现在非常简单一行代码搞定（两种方式）：  </div><div class="line"></div><div class="line">```Java</div><div class="line">list.sort(Comparator.comparing(Student::getName)); <span class="comment">//按名字排序</span></div><div class="line">list.sort((p1,p2) -&gt; &#123;</div><div class="line">   <span class="keyword">return</span> p1.getName().toLowerCase().compareTo(p2.getName().toLowerCase());</div><div class="line">&#125;);<span class="comment">//lambda表达式</span></div></pre></td></tr></table></figure>
+<h2 id="6-stream中的filter功能"><a href="#6-stream中的filter功能" class="headerlink" title="6.stream中的filter功能  "></a>6.stream中的filter功能  </h2><p>filter功能主要是对集合中的元素进行过滤，以List为例，找出名字叫Jack的学生：  </p>
+<pre><code class="Java">List&lt;Student&gt; filterResult = list.stream().filter(p -&gt; StringUtils.equals(p.getName(), <span class="string">"Jack"</span>)).collect(Collectors.toList());
+filterResult.stream().forEach(p -&gt; {
+   System.out.println(p.getName());
+});
+</code></pre>
+<p>上面的代码使用了stream的filter函数和forEach函数，以后可以少写for循环遍历List了。filter的<code>-&gt;</code>后面需要返回一个boolean值。最好”Jack”写前面，习惯。<br>filter会对List中的每个元素进行处理。  </p>
+<h2 id="7-stream中的map功能"><a href="#7-stream中的map功能" class="headerlink" title="7.stream中的map功能  "></a>7.stream中的map功能  </h2><p>给每个学生的名字后面加上个China:   </p>
+<pre><code class="Java">List&lt;Student&gt; mapResult = list.stream().map(p -&gt; {
+   p.setName(p.getName() + <span class="string">" China"</span>);
+   <span class="keyword">return</span> p;
+}).collect(Collectors.toList());
+mapResult.stream().forEach(p -&gt; {
+   System.out.println(p.getName());
+});
+</code></pre>
+<p>map函数的主要功能是对List中的每个元素进行处理并返回，可以返回其它的数据类型，例如：  </p>
+<pre><code class="Java">List&lt;String&gt; mapResult = list.stream().map(p -&gt; {
+p.setName(p.getName() + <span class="string">" China"</span>);
+   <span class="keyword">return</span> p.getName();
+}).collect(Collectors.toList());
+mapResult.stream().forEach(p -&gt; {
+   System.out.println(p);
+});
+</code></pre>
+<h2 id="8-filter和map结合起来用"><a href="#8-filter和map结合起来用" class="headerlink" title="8.filter和map结合起来用  "></a>8.filter和map结合起来用  </h2><p>找出名字为Jack的Student并在名字后面加上China：  </p>
+<pre><code class="Java">List&lt;Student&gt; result = list.stream().filter(p -&gt; StringUtils.equals(<span class="string">"Jack"</span>, p.getName())).map(p -&gt; {
+   p.setName(p.getName() + <span class="string">" China"</span>);
+   <span class="keyword">return</span> p;
+}).collect(Collectors.toList());
+   result.stream().forEach(p -&gt; {
+   System.out.println(p.getName());
+});
+</code></pre>
+<p>文章作者：Tyan<br>博客：<a href="http://noahsnail.com" target="_blank" rel="external">noahsnail.com</a>  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ltcxwf-gmail.github.io/2016/09/06/2016-9-6-Java中的集合转换(lambda表达式)/" data-id="cissau1qn0004s9sbzzbm944l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/05/2016-9-5-Mac下解决程序端口占用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mac下程序端口的查找及关闭</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-多用户/">Git 多用户</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git-多用户/" style="font-size: 10px;">Git 多用户</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/06/2016-9-6-Java中的集合转换(lambda表达式)/">Java中的集合转换(lambda表达式)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/05/2016-9-5-Mac下解决程序端口占用/">Mac下程序端口的查找及关闭</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/02/2016-9-2-Java中List与Array的转换/">Java中List与Array的转换</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/31/Git多用户配置/">Git多用户配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Tyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
