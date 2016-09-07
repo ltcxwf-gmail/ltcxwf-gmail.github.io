@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ltcxwf-gmail.github.io/"/>
-  <updated>2016-09-07T05:10:45.000Z</updated>
+  <updated>2016-09-07T05:15:40.000Z</updated>
   <id>https://ltcxwf-gmail.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://ltcxwf-gmail.github.io/2016/09/06/2016-9-6-Java%E4%B8%AD%E7%9A%84%E9%9B%86%E5%90%88%E8%BD%AC%E6%8D%A2(lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F)/"/>
     <id>https://ltcxwf-gmail.github.io/2016/09/06/2016-9-6-Java中的集合转换(lambda表达式)/</id>
     <published>2016-09-06T03:36:42.000Z</published>
-    <updated>2016-09-07T05:10:45.000Z</updated>
+    <updated>2016-09-07T05:15:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java应用中进行集合对象间的转换是非常常见的事情，有时候在处理某些任务时选择一种好的数据结构往往会起到事半功倍的作用，因此熟悉每种数据结构并知道其特点对于程序员来说是非常重要的，而只知道这些是不够的，有时候你需要一个Map来处理数据，而此时你手中只有一个List，此时知道如何将List转为Map就非常重要了，而只知道for循环将List转为Map这就太Low了，JDK1.8 吸收了许多函数式编程的思想，其中的lambda表达式不仅功能强大，而且减少了很多不必要的代码，本文不是介绍lambda表达式的，主要是利用lambda表达式进行Java中结合的转换，当然lambda表达式的使用往往离不开JDK1.8 的stream类，本文主要使用<strong><em>lambda表达式</em></strong>和<strong><em>stream类</em></strong>来实现Java中集合的转换，也会涉及到利用stream对数据进行的一些处理。 </p>
 <h2 id="1-List-To-Map-lt-gt-Map-To-List"><a href="#1-List-To-Map-lt-gt-Map-To-List" class="headerlink" title="1.List To Map  &lt;==&gt; Map To List  "></a>1.List To Map  &lt;==&gt; Map To List  </h2><p>将List转换为Map是Java中的常见操作，例如我想知道某个对象是否已经在List中，此时就需要将List转成Map，你总不会打算for循环一个个比吧！  </p>
@@ -68,7 +68,7 @@ mapResult.stream().forEach(p -&gt; {
     
     <summary type="html">
     
-      &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在Java应用中进行集合对象间的转换是非常常见的事情，有时候在处理某些任务时选择一种好的数据结构往往会起到事半功倍的作用，因此熟悉每种数据结构并知道其特点对于程序员来说是非常重要
+      在Java应用中进行集合对象间的转换是非常常见的事情，有时候在处理某些任务时选择一种好的数据结构往往会起到事半功倍的作用，因此熟悉每种数据结构并知道其特点对于程序员来说是非常重要的
     
     </summary>
     
@@ -82,7 +82,7 @@ mapResult.stream().forEach(p -&gt; {
     <link href="https://ltcxwf-gmail.github.io/2016/09/05/2016-9-5-Mac%E4%B8%8B%E8%A7%A3%E5%86%B3%E7%A8%8B%E5%BA%8F%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8/"/>
     <id>https://ltcxwf-gmail.github.io/2016/09/05/2016-9-5-Mac下解决程序端口占用/</id>
     <published>2016-09-05T01:55:00.000Z</published>
-    <updated>2016-09-07T05:10:35.000Z</updated>
+    <updated>2016-09-07T05:15:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;使用Mac开发经常会碰到端口被占用的问题，例如作者在使用Spring Boot开发应用时，在启动Application后，忘了关闭，又重启了一次Application，此时会报错误，而且由于重启Application，导致上一次的启动的Application找不到在哪关闭了，此时需要进入终端去查看8080端口对应的进程id，并根据id关闭对应的应用。<br>错误信息如下图所示：  </p>
 <pre><code class="java"><span class="number">2016</span>-<span class="number">09</span>-<span class="number">05</span> <span class="number">09</span>:<span class="number">06</span>:<span class="number">26.734</span> ERROR <span class="number">1681</span> --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Failed to start end point associated with ProtocolHandler [<span class="string">"http-nio-8080"</span>]
@@ -189,7 +189,7 @@ at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContain
     
     <summary type="html">
     
-      &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;使用Mac开发经常会碰到端口被占用的问题，例如作者在使用Spring Boot开发应用时，在启动Application后，忘了关闭，又重启了一次Application，此时会报错误，而且由于重启Application，导致上一
+      使用Mac开发经常会碰到端口被占用的问题，例如作者在使用Spring Boot开发应用时，在启动Application后，忘了关闭，又重启了一次Application，此时会报错误，而且由于重启Application，导致上一次的启动的Application找不到在哪关闭了，此时需要进入终端去查看8080端口对应的进程id，并根据id关闭对应的应用。
     
     </summary>
     
@@ -205,7 +205,7 @@ at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContain
     <link href="https://ltcxwf-gmail.github.io/2016/09/02/2016-9-2-Java%E4%B8%ADList%E4%B8%8EArray%E7%9A%84%E8%BD%AC%E6%8D%A2/"/>
     <id>https://ltcxwf-gmail.github.io/2016/09/02/2016-9-2-Java中List与Array的转换/</id>
     <published>2016-09-02T07:46:24.000Z</published>
-    <updated>2016-09-07T05:10:23.000Z</updated>
+    <updated>2016-09-07T05:14:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在Java项目开发过程中，集合之间的互相转换是非常常见的，其中两个比较典型的转换是List和Array之间的转换，本文主要介绍这二者之间的转换、其中存在的一些问题以及解决方案，本文JDK版本为1.8。  </p>
 <h1 id="1-Array-To-List"><a href="#1-Array-To-List" class="headerlink" title="1.Array To List "></a>1.Array To List </h1><p>Array To List在Java中的方法是Arrays.asList()方法，这是在Java开发中常用的方法，在一般情况下使用这个方法将Array转为List都没问题，但要对转换后的List进行修改时会出现下面的异常：  </p>
@@ -292,8 +292,7 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
     
     <summary type="html">
     
-      &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在Java项目开发过程中，集合之间的互相转换是非常常见的，其中两个比较典型的转换是List和Array之间的转换，本文主要介绍这二者之间的转换、其中存在的一些问题以及解决方案，本文JDK版本为1.8。  &lt;/p&gt;
-&lt;h1 id
+      在Java项目开发过程中，集合之间的互相转换是非常常见的，其中两个比较典型的转换是List和Array之间的转换，本文主要介绍这二者之间的转换、其中存在的一些问题以及解决方案，本文JDK版本为1.8。
     
     </summary>
     
@@ -307,7 +306,7 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
     <link href="https://ltcxwf-gmail.github.io/2016/08/31/2016-9-1-Git%E5%A4%9A%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE/"/>
     <id>https://ltcxwf-gmail.github.io/2016/08/31/2016-9-1-Git多用户配置/</id>
     <published>2016-08-31T15:03:22.000Z</published>
-    <updated>2016-09-07T05:10:10.000Z</updated>
+    <updated>2016-09-07T05:14:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;在Git使用中经常会碰到多用户问题，例如：你在公司里有一个git账户，在github上有一个账户，并且你想在一台电脑上同时对这两个git账户进行操作，此时就需要进行git多用户配置。<br>&nbsp;&nbsp;&nbsp;&nbsp;首先配置不同的SSH KEY，使用ssh-keygen命令产生两个不同的SSH KEY，进入.ssh目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#切换到.ssh目录</div><div class="line">cd ~/.ssh  </div><div class="line">#使用自己的企业邮箱产生SSH KEY</div><div class="line">ssh-keygen -t rsa -C &quot;mywork@email.com&quot;  </div><div class="line">#企业的可以使用id_rsa，也可以自己起名，例如：id_rsa_work</div><div class="line">Enter file in which to save the key (/Users/ltc/.ssh/id_rsa): id_rsa </div><div class="line">#将ssh key添加到SSH agent中</div><div class="line">ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure></p>
 <p>同理，配置自己的github账户，再有其他账户类似:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#切换到.ssh目录</div><div class="line">cd ~/.ssh  </div><div class="line">#使用自己github的注册邮箱产生SSH KEY</div><div class="line">ssh-keygen -t rsa -C &quot;mygithub@email.com&quot;  </div><div class="line">#github的SSH KEY</div><div class="line">Enter file in which to save the key (/Users/ltc/.ssh/id_rsa): id_rsa_github</div><div class="line">#将ssh key添加到SSH agent中 </div><div class="line">ssh-add ~/.ssh/id_rsa_github</div></pre></td></tr></table></figure></p>
@@ -319,7 +318,7 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
     
     <summary type="html">
     
-      &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在Git使用中经常会碰到多用户问题，例如：你在公司里有一个git账户，在github上有一个账户，并且你想在一台电脑上同时对这两个git账户进行操作，此时就需要进行git多用户配置。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      在Git使用中经常会碰到多用户问题，例如：你在公司里有一个git账户，在github上有一个账户，并且你想在一台电脑上同时对这两个git账户进行操作，此时就需要进行git多用户配置。
     
     </summary>
     
