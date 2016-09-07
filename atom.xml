@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ltcxwf-gmail.github.io/"/>
-  <updated>2016-09-07T07:37:37.000Z</updated>
+  <updated>2016-09-07T07:39:22.000Z</updated>
   <id>https://ltcxwf-gmail.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://ltcxwf-gmail.github.io/2016/09/07/2016-7-7-Spring%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D/"/>
     <id>https://ltcxwf-gmail.github.io/2016/09/07/2016-7-7-Spring框架介绍/</id>
     <published>2016-09-07T07:34:41.000Z</published>
-    <updated>2016-09-07T07:37:37.000Z</updated>
+    <updated>2016-09-07T07:39:22.000Z</updated>
     
-    <content type="html"><![CDATA[<p><em><a href="#I">Part I. Spring框架综述</a>
+    <content type="html"><![CDATA[<p><em><a href="#I">Part I. Spring框架综述</a>  
 </em><a href="#1">1. 开始学习Spring</a></p>
 <p></p><h1 id="I">Part I. Spring框架综述</h1><br>&nbsp;&nbsp;&nbsp;&nbsp;Spring框架是一个轻量级的解决方案，对于构建一个企业级应用来说，Spring框架也是一种可能的一站式服务。Spring是模块化的，允许你仅使用你需要的那部分功能，而不必引入其它的部分。你可以在任何web框架上使用IoC容器，也可以只使用Hibernate集成代码或JDBC抽象层。Spring框架支持声明式的事务管理，支持通过RMI或web service来远程访问你的逻辑，并且支持多种持久化数据的方式。Spring提供一个全功能的MVC框架，使你能将AOP透明的集成到软件中。<br>&nbsp;&nbsp;&nbsp;&nbsp;Spring被设计为非侵入式的，这意味着你自己的逻辑代码通常情况下不依赖于框架本身。在你的集成层（例如数据访问层），将会存在一些数据访问技术的依赖和Spring的库。不管怎样，从你其余的代码中分离这些依赖应该是很容易的。<p></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;这篇文档是Spring框架特性的参考手册。如果你有任何关于这篇文档的要求、评论或问题，请向用户邮寄列表中的人发邮件。关于框架本身的问题可以在StackOverflow上提问。</p>
