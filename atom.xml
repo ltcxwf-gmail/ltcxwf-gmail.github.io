@@ -198,9 +198,9 @@ at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContain
       <category term="blog" scheme="https://ltcxwf-gmail.github.io/categories/blog/"/>
     
     
-      <category term="Java" scheme="https://ltcxwf-gmail.github.io/tags/Java/"/>
-    
       <category term="Mac" scheme="https://ltcxwf-gmail.github.io/tags/Mac/"/>
+    
+      <category term="Java" scheme="https://ltcxwf-gmail.github.io/tags/Java/"/>
     
   </entry>
   
