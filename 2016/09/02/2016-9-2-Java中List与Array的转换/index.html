@@ -63,9 +63,9 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Java," />
@@ -79,7 +79,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
 
 
 
@@ -99,30 +99,24 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+<script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
     scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
       userId: 0,
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      author: '작성자'
     }
   };
 </script>
 
 
 
+
+  <link rel="canonical" href="https://ltcxwf-gmail.github.io/2016/09/02/2016-9-2-Java中List与Array的转换/"/>
 
   <title> Java中List与Array的转换 | SnailTyan's Blog </title>
 </head>
@@ -182,7 +176,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            홈
           </a>
         </li>
       
@@ -192,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            아카이브
           </a>
         </li>
       
@@ -202,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            태그
           </a>
         </li>
       
@@ -226,6 +220,7 @@
   <div id="posts" class="posts-expand">
     
 
+  
   
 
   
@@ -254,7 +249,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">작성일</span>
             <time itemprop="dateCreated" datetime="2016-09-02T15:46:24+08:00" content="2016-09-02">
               2016-09-02
             </time>
@@ -266,7 +261,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/blog/" itemprop="url" rel="index">
@@ -390,6 +385,7 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
     <div>
       
         
+
       
     </div>
 
@@ -400,12 +396,11 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
       
     </div>
 
-
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -419,8 +414,6 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
               </a>
             
           </div>
-
-          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -475,10 +468,10 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            목차
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            흝어보기
           </li>
         </ul>
       
@@ -495,7 +488,7 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">포스트</span>
             </a>
           </div>
 
@@ -503,7 +496,7 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">카테고리</span>
               
             </div>
           
@@ -512,7 +505,7 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">태그</span>
               </a>
             </div>
           
@@ -543,15 +536,12 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
       
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
-
             
               
             
-
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Array-To-List"><span class="nav-number">1.</span> <span class="nav-text">1.Array To List </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-List-To-Array"><span class="nav-number">2.</span> <span class="nav-text">2.List To Array  </span></a></li></ol></div>
             
-
           </div>
         </section>
       
@@ -577,7 +567,7 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
@@ -640,34 +630,9 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
@@ -675,12 +640,35 @@ list.stream().toArray(String[]::<span class="keyword">new</span>); <span class="
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
 
   
 
   
-  
-
 
 </body>
 </html>

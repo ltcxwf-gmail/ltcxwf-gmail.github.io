@@ -63,9 +63,9 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Java," />
@@ -81,7 +81,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
 
 
 
@@ -101,30 +101,24 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+<script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
     scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
       userId: 0,
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      author: '작성자'
     }
   };
 </script>
 
 
 
+
+  <link rel="canonical" href="https://ltcxwf-gmail.github.io/2016/09/06/2016-9-6-Java中的集合转换(lambda表达式)/"/>
 
   <title> Java中的集合转换(lambda表达式) | SnailTyan's Blog </title>
 </head>
@@ -184,7 +178,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            홈
           </a>
         </li>
       
@@ -194,7 +188,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            아카이브
           </a>
         </li>
       
@@ -204,7 +198,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            태그
           </a>
         </li>
       
@@ -228,6 +222,7 @@
   <div id="posts" class="posts-expand">
     
 
+  
   
 
   
@@ -256,7 +251,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">작성일</span>
             <time itemprop="dateCreated" datetime="2016-09-06T11:36:42+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -268,7 +263,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/blog/" itemprop="url" rel="index">
@@ -353,6 +348,7 @@ mapResult.stream().forEach(p -&gt; {
     <div>
       
         
+
       
     </div>
 
@@ -363,12 +359,11 @@ mapResult.stream().forEach(p -&gt; {
       
     </div>
 
-
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -382,8 +377,6 @@ mapResult.stream().forEach(p -&gt; {
               </a>
             
           </div>
-
-          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -434,10 +427,10 @@ mapResult.stream().forEach(p -&gt; {
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            목차
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            흝어보기
           </li>
         </ul>
       
@@ -454,7 +447,7 @@ mapResult.stream().forEach(p -&gt; {
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">포스트</span>
             </a>
           </div>
 
@@ -462,7 +455,7 @@ mapResult.stream().forEach(p -&gt; {
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">카테고리</span>
               
             </div>
           
@@ -471,7 +464,7 @@ mapResult.stream().forEach(p -&gt; {
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">태그</span>
               </a>
             </div>
           
@@ -502,15 +495,12 @@ mapResult.stream().forEach(p -&gt; {
       
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
-
             
               
             
-
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-List-To-Map-lt-gt-Map-To-List"><span class="nav-number">1.</span> <span class="nav-text">1.List To Map  <==> Map To List  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Array-To-List-lt-gt-List-To-Array"><span class="nav-number">2.</span> <span class="nav-text">3.Array To List <==> List To Array  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Map-To-Set-lt-gt-Set-To-Map"><span class="nav-number">3.</span> <span class="nav-text">4.Map To Set  <==> Set To Map  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-stream中的filter功能"><span class="nav-number">4.</span> <span class="nav-text">6.stream中的filter功能  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-stream中的map功能"><span class="nav-number">5.</span> <span class="nav-text">7.stream中的map功能  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-filter和map结合起来用"><span class="nav-number">6.</span> <span class="nav-text">8.filter和map结合起来用  </span></a></li></ol></div>
             
-
           </div>
         </section>
       
@@ -536,7 +526,7 @@ mapResult.stream().forEach(p -&gt; {
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
@@ -599,34 +589,9 @@ mapResult.stream().forEach(p -&gt; {
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
@@ -634,12 +599,35 @@ mapResult.stream().forEach(p -&gt; {
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
 
   
 
   
-  
-
 
 </body>
 </html>
